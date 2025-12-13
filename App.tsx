@@ -27,7 +27,7 @@ const App: React.FC = () => {
     return (
       <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black transition-colors duration-500">
         <img 
-          src="https://uploads.onecompiler.io/43w9rf9r9/446gjpxtm/P%20(19).png" 
+          src="https://uploads.onecompiler.io/43w9rf9r9/447d456ee/P%20DATABASE%20BUF.png" 
           alt="Loading Logo" 
           className="w-32 h-32 md:w-64 md:h-64 animate-pulse object-contain"
         />
