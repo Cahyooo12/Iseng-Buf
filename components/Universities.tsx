@@ -8,12 +8,10 @@ interface University {
     tags: string;
 }
 
-// Helper to generate a consistent avatar URL based on name if no specific logo is provided
 const getAvatar = (name: string) => `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random&color=fff&size=128&bold=true&font-size=0.33`;
 
 const universities: University[] = [
     { name: "Universitas Amikom Yogyakarta", slogan: "Creative Economy Park", tags: "IT • Multimedia", url: "https://home.amikom.ac.id/", logo: "https://kadowisudaku.com/wp-content/uploads/2018/01/logo-amikom.png" },
-
     { name: "Universitas Gadjah Mada", slogan: "Locally Rooted, Globally Respected", tags: "Top #1 • Riset", url: "https://ugm.ac.id/", logo: "https://ugm.ac.id/wp-content/uploads/2022/11/LOGO-UGM-BAKU-tnp-back-grou-300x300.jpg" },
     { name: "Universitas Negeri Yogyakarta", slogan: "Leading in Character Education", tags: "Pendidikan • Vokasi", url: "https://www.uny.ac.id/", logo: "https://www.uny.ac.id/sites/default/files/inline-images/logo-uny.png" },
     { name: "UPN ”Veteran” Yogyakarta", slogan: "Widya Mwat Yasa", tags: "Geologi • Perminyakan", url: "https://www.upnyk.ac.id/", logo: "https://www.upnyk.ac.id/public/frontend/images/logo-upn.png" },
@@ -21,28 +19,28 @@ const universities: University[] = [
     { name: "UIN Sunan Kalijaga", slogan: "Integrasi - Interkoneksi", tags: "Islamic Studies • Sosial", url: "https://www.uin-suka.ac.id/", logo: "https://upload.wikimedia.org/wikipedia/id/c/c6/Logo_UIN_Sunan_Kalijaga.png" },
     { name: "Universitas Tidar", slogan: "Unggul dalam Kewirausahaan", tags: "Wirausaha • Teknik", url: "https://untidar.ac.id/", logo: "https://untidar.ac.id/wp-content/uploads/2018/11/LOGO-UNTIDAR-2017-218x218.png" },
     { name: "UNS Surakarta", slogan: "Smart and Green Campus", tags: "Kedokteran • Bisnis", url: "https://uns.ac.id/", logo: "https://uns.ac.id/id/wp-content/uploads/2023/06/cropped-cropped-logo-uns-biru-1.webp" },
-    { name: "Universitas Negeri Malang", slogan: "Excellence in Learning Innovation", tags: "Learning Univ. • Sastra", url: "https://um.ac.id/" },
-    { name: "Universitas Jember", slogan: "Tradition of Excellence", tags: "Bioteknologi • Pertanian", url: "https://unej.ac.id/" },
-    { name: "Universitas Jenderal Soedirman", slogan: "Maju Terus Pantang Mundur", tags: "Biologi • Ekonomi", url: "https://unsoed.ac.id/" },
-    { name: "Universitas Terbuka", slogan: "Making Higher Education Open to All", tags: "Fleksibel • Jarak Jauh", url: "https://www.ut.ac.id/" },
-    { name: "Institut Seni Indonesia Yogyakarta", slogan: "Indonesia’s Arts Institute", tags: "Seni Murni • Desain", url: "https://isi.ac.id/" },
-    { name: "Institut Teknologi Kalimantan", slogan: "Specta: Solid, Professional, Excellence", tags: "Teknologi • Energi", url: "https://itk.ac.id/" },
-    { name: "Poltekkes Kemenkes Yogyakarta", slogan: "Unggul, Berbudaya, Mendunia", tags: "Kesehatan • Terapan", url: "https://poltekkesjogja.ac.id/" },
+    { name: "Universitas Negeri Malang", slogan: "Excellence in Learning Innovation", tags: "Learning Univ. • Sastra", url: "https://um.ac.id/" , logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtoG5Dw78C8i2hqRKDDiaw_A8QyH8g0VVjGQ&s"    },
+    { name: "Universitas Jember", slogan: "Tradition of Excellence", tags: "Bioteknologi • Pertanian", url: "https://unej.ac.id/", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Logo_unej.png"    },
+    { name: "Universitas Jenderal Soedirman", slogan: "Maju Terus Pantang Mundur", tags: "Biologi • Ekonomi", url: "https://unsoed.ac.id/", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPxD8T8isS2ISVFIAc5nLW_tv1VDw1GQGGPQ&s"    },
+    { name: "Universitas Terbuka", slogan: "Making Higher Education Open to All", tags: "Fleksibel • Jarak Jauh", url: "https://www.ut.ac.id/", logo: "https://upload.wikimedia.org/wikipedia/id/thumb/c/c3/Logo_Universitas_Terbuka.svg/1200px-Logo_Universitas_Terbuka.svg.png"    },
+    { name: "Institut Seni Indonesia Yogyakarta", slogan: "Indonesia’s Arts Institute", tags: "Seni Murni • Desain", url: "https://isi.ac.id/" , logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtggeCROFscG8BKySTEP-Zn_ZpB7TRNP-LmA&s"    },
+    { name: "Institut Teknologi Kalimantan", slogan: "Specta: Solid, Professional, Excellence", tags: "Teknologi • Energi", url: "https://itk.ac.id/" , logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq5vboLRFkrMF53foNIemsfbEbEoxS5b1u0g&s"    },
+    { name: "Poltekkes Kemenkes Yogyakarta", slogan: "Unggul, Berbudaya, Mendunia", tags: "Kesehatan • Terapan", url: "https://poltekkesjogja.ac.id/" , logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrDTTcdfJF5ETD_GbuU-R9fFyEJBZflgdaAg&s"    },
 
     // --- PTS & Sekolah Tinggi ---
-    { name: "Universitas Islam Indonesia", slogan: "Values, Innovation, Perfection", tags: "Hukum • Arsitektur", url: "https://uii.ac.id/" },
-    { name: "Universitas Muhammadiyah Yogyakarta", slogan: "Muda Mendunia", tags: "HI • Kedokteran", url: "https://umy.ac.id/" },
+    { name: "Universitas Islam Indonesia", slogan: "Values, Innovation, Perfection", tags: "Hukum • Arsitektur", url: "https://uii.ac.id/" , logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTBpr6vdmunG2nSoBkvc0xv4__DFcOBJwtyw&s" },
+    { name: "Universitas Muhammadiyah Yogyakarta", slogan: "Muda Mendunia", tags: "HI • Kedokteran", url: "https://umy.ac.id/" , logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdAzQagfJto-bVwC0l5k_Vj-DdqJzyIjIaGg&s" },
     { name: "Universitas Ahmad Dahlan", slogan: "Moral and Intellectual Integrity", tags: "Farmasi • Psikologi", url: "https://uad.ac.id/", logo: "https://uad.ac.id/wp-content/uploads/logo-warna.png" },
-    { name: "Universitas Sanata Dharma", slogan: "Cerdas dan Humanis", tags: "Humanis • Pendidikan", url: "https://usd.ac.id/" },
+    { name: "Universitas Sanata Dharma", slogan: "Cerdas dan Humanis", tags: "Humanis • Pendidikan", url: "https://usd.ac.id/" , logo: "https://www.usd.ac.id/assets/img/USD500.png" },
     { name: "Universitas Sarjanawiyata Tamansiswa", slogan: "Salam dan Bahagia", tags: "Kebangsaan • Manajemen", url: "https://ustjogja.ac.id/", logo: "https://i.pinimg.com/736x/28/16/76/2816762331ca862f6104d7084c90c7f5.jpg" },
-    { name: "Universitas Teknologi Yogyakarta", slogan: "Inspiring the Future", tags: "Teknologi • Bisnis", url: "https://uty.ac.id/" },
-    { name: "Universitas PGRI Yogyakarta", slogan: "Reading the Future", tags: "Keguruan • Konseling", url: "https://upy.ac.id/" },
-    { name: "Universitas Kristen Duta Wacana", slogan: "Servant Leadership", tags: "Teologi • Bioteknologi", url: "https://ukdw.ac.id/" },
-    { name: "Universitas Teknologi Digital Indonesia", slogan: "Digital Global", tags: "Digital • Coding", url: "https://utdi.ac.id/" },
-    { name: "Politeknik YKPN Yogyakarta", slogan: "Professional & Integrity", tags: "Akuntansi • Keuangan", url: "https://ykpn.ac.id/" },
-    { name: "STIKES Notokusumo Yogyakarta", slogan: "Caring & Competent", tags: "Keperawatan • Farmasi", url: "https://stikes-notokusumo.ac.id/" },
-    { name: "STIKES Akbidyo", slogan: "Terdepan dalam Prestasi", tags: "Kebidanan • Kesehatan", url: "https://akbidyo.ac.id/" },
-    { name: "Sekolah Tinggi Maritim Yogyakarta", slogan: "Jalasveva Jayamahe", tags: "Maritim • Pelayaran", url: "https://stimaryo.ac.id/" },
+    { name: "Universitas Teknologi Yogyakarta", slogan: "Inspiring the Future", tags: "Teknologi • Bisnis", url: "https://uty.ac.id/", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFqZ1mgVassbJyuWYZQ0pwe1NHlVl5PU8d5A&s" },
+    { name: "Universitas PGRI Yogyakarta", slogan: "Reading the Future", tags: "Keguruan • Konseling", url: "https://upy.ac.id/", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlRzYGvCuPdONJaSk5IK7Np82VYMWbbF-WqA&s" },
+    { name: "Universitas Kristen Duta Wacana", slogan: "Servant Leadership", tags: "Teologi • Bioteknologi", url: "https://ukdw.ac.id/", logo: "https://www.ukdw.ac.id/public_html/wp-content/uploads/2017/10/logo-ukdw.png" },
+    { name: "Universitas Teknologi Digital Indonesia", slogan: "Digital Global", tags: "Digital • Coding", url: "https://utdi.ac.id/", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo4HyCGDFo7-k59QXAuvhEjpgqBrI3CHGxwA&s" },
+    { name: "Politeknik YKPN Yogyakarta", slogan: "Professional & Integrity", tags: "Akuntansi • Keuangan", url: "https://ykpn.ac.id/" , logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyPhmFNDgZ8momExRYAK7r0dBwo1d_GYkDdw&s" },
+    { name: "STIKES Notokusumo Yogyakarta", slogan: "Caring & Competent", tags: "Keperawatan • Farmasi", url: "https://stikes-notokusumo.ac.id/" , logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFvmsrj5mmwBZehD_qmTSmpzApDtINxbbRAA&s" },
+    { name: "STIKES Akbidyo", slogan: "Terdepan dalam Prestasi", tags: "Kebidanan • Kesehatan", url: "https://akbidyo.ac.id/" , logo: "https://akbidyo.ac.id/logo_image/stikes_akbidyo_edfa0b5e18a741b5.jpg" },
+    { name: "Sekolah Tinggi Maritim Yogyakarta", slogan: "Jalasveva Jayamahe", tags: "Maritim • Pelayaran", url: "https://stimaryo.ac.id/", logo : "https://jogjaversitas.id/wp-content/uploads/2020/07/STIMARYO.jpg" },
 ];
 
 const Universities: React.FC = () => {
