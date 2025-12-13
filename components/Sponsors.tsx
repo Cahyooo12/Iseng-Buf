@@ -1,12 +1,42 @@
 import React from 'react';
 
 const sponsors = [
-    { id: 1, name: "Bank BPD DIY", category: "Official Bank" },
-    { id: 2, name: "Telkomsel", category: "Connectivity Partner" },
-    { id: 3, name: "Ruangguru", category: "Ed-Tech Partner" },
-    { id: 4, name: "Gramedia", category: "Literacy Partner" },
-    { id: 5, name: "Wardah", category: "Beauty Partner" },
-    { id: 6, name: "Teh Botol Sosro", category: "Refreshment" },
+    { 
+        id: 1, 
+        name: "KOSANT STUDIO", 
+        category: "Konsultan Event", 
+        logo: "https://uploads.onecompiler.io/43w9rf9r9/447d456ee/P%20DATABASE%20BUF%20(1).png" 
+    },
+    { 
+        id: 2, 
+        name: "Telkomsel", 
+        category: "Connectivity Partner", 
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Telkomsel_2021_icon.svg/1200px-Telkomsel_2021_icon.svg.png" 
+    },
+    { 
+        id: 3, 
+        name: "Ruangguru", 
+        category: "Ed-Tech Partner", 
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo_Ruangguru_New.png/683px-Logo_Ruangguru_New.png" 
+    },
+    { 
+        id: 4, 
+        name: "Gramedia", 
+        category: "Literacy Partner", 
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Gramedia_Asri_Media_logo.svg/2560px-Gramedia_Asri_Media_logo.svg.png" 
+    },
+    { 
+        id: 5, 
+        name: "Wardah", 
+        category: "Beauty Partner", 
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Wardah_logo.svg/2560px-Wardah_logo.svg.png" 
+    },
+    { 
+        id: 6, 
+        name: "Teh Botol Sosro", 
+        category: "Refreshment", 
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Teh_Botol_Sosro_logo.svg/1200px-Teh_Botol_Sosro_logo.svg.png" 
+    },
 ];
 
 const Sponsors: React.FC = () => {
@@ -23,16 +53,15 @@ const Sponsors: React.FC = () => {
                 {/* Current Sponsors Grid */}
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-24">
                     {sponsors.map((sponsor) => (
-                        <div key={sponsor.id} className="flex flex-col items-center justify-center p-4 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-xl hover:shadow-lg dark:hover:bg-zinc-800/80 hover:-translate-y-1 transition-all duration-300 cursor-pointer group h-36">
-                            <div className="h-16 w-full flex items-center justify-center mb-4">
+                        <div key={sponsor.id} className="flex flex-col items-center justify-center p-4 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-xl hover:shadow-lg dark:hover:bg-zinc-800/80 hover:-translate-y-1 transition-all duration-300 cursor-pointer group h-40">
+                            <div className="h-20 w-full flex items-center justify-center mb-3 p-2">
                                 <img 
-                                    src="https://uploads.onecompiler.io/43w9rf9r9/446rpvut2/Untitled%20design%20(2).png"
+                                    src={sponsor.logo}
                                     alt={`${sponsor.name} Logo`} 
-                                    className="h-full w-auto object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-md"
-                                    style={{ filter: `hue-rotate(${(sponsor.id * 50)}deg)` }}
+                                    className="h-full w-full object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-sm grayscale group-hover:grayscale-0 opacity-80 group-hover:opacity-100"
                                 />
                             </div>
-                            <h4 className="font-bold text-slate-800 dark:text-white text-sm text-center">{sponsor.name}</h4>
+                            <h4 className="font-bold text-slate-800 dark:text-white text-xs text-center">{sponsor.name}</h4>
                             <p className="text-[10px] text-slate-500 dark:text-gray-400 mt-1 uppercase tracking-wide text-center">{sponsor.category}</p>
                         </div>
                     ))}
