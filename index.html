@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bamsayota University Fair 2026</title>
     <meta name="description" content="Temukan kampus impianmu di Bamsayota University Fair 2026!" />
-    <link rel="icon" href="https://uploads.onecompiler.io/43w9rf9r9/447d456ee/P%20DATABASE%20BUF.png" type="image/png">
+    <link rel="icon" href="https://uploads.onecompiler.io/43w9rf9r9/446gjpxtm/P%20(19).png" type="image/png">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,7 +20,7 @@
             colors: {
               primary: '#3B82F6',
               secondary: '#8B5CF6',
-              dark: '#000000', 
+              dark: '#000000', // Changed to pure black
             },
             animation: {
               'float': 'float 6s ease-in-out infinite',
@@ -41,6 +41,13 @@
       }
     </script>
 
+    <!-- Polyfill for process.env (Fix for GitHub Pages/Static Hosting) -->
+    <script>
+      if (typeof process === 'undefined') {
+        window.process = { env: { API_KEY: '' } };
+      }
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,14 +58,13 @@
   "imports": {
     "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0"
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
   <body class="bg-gray-50 dark:bg-black text-slate-900 dark:text-white overflow-x-hidden selection:bg-blue-500 selection:text-white transition-colors duration-300">
     <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
+  </body>
 </html>
