@@ -6,6 +6,7 @@ import Universities from './components/Universities';
 import Schedule from './components/Schedule';
 import Sponsors from './components/Sponsors';
 import Footer from './components/Footer';
+import Chatbot from './components/Chatbot';
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -56,6 +57,7 @@ const App: React.FC = () => {
         <Sponsors />
       </main>
       <Footer />
+      <Chatbot />
     </div>
   );
 };
