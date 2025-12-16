@@ -20,7 +20,7 @@
             colors: {
               primary: '#3B82F6',
               secondary: '#8B5CF6',
-              dark: '#000000', // Changed to pure black
+              dark: '#000000',
             },
             animation: {
               'float': 'float 6s ease-in-out infinite',
@@ -43,9 +43,10 @@
 
     <!-- Polyfill for process.env (Fix for GitHub Pages/Static Hosting) -->
     <script>
-      if (typeof process === 'undefined') {
-        window.process = { env: { API_KEY: '' } };
-      }
+      window.process = window.process || {};
+      window.process.env = window.process.env || {};
+      // Inject API Key directly for static hosting compatibility
+      window.process.env.API_KEY = "AIzaSyCISBJ8PzhArtPnknKKsdghBm0A_zPtF80";
     </script>
 
     <!-- Google Fonts -->
@@ -53,18 +54,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.33.0"
-  }
-}
-</script>
+    <script type="importmap">
+    {
+      "imports": {
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "@google/genai": "https://esm.sh/@google/genai@^1.33.0"
+      }
+    }
+    </script>
 </head>
   <body class="bg-gray-50 dark:bg-black text-slate-900 dark:text-white overflow-x-hidden selection:bg-blue-500 selection:text-white transition-colors duration-300">
-    <div id="root"></div>
+    <div id="root">
+        <!-- Fallback content while React loads -->
+        <div style="height: 100vh; width: 100vw; display: flex; align-items: center; justify-content: center; background-color: black; color: white;">
+            Loading...
+        </div>
+    </div>
+    <!-- Entry Point Script - CRITICAL for loading the app -->
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>
