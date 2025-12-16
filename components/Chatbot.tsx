@@ -63,7 +63,7 @@ const Chatbot: React.FC = () => {
 
         const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
         const chat = ai.chats.create({
-            model: 'gemini-2.5-flash',
+            model: 'gemini-1.5-flash',
             config: {
                 systemInstruction: SYSTEM_INSTRUCTION,
                 tools: [{ googleSearch: {} }], // MENGAKTIFKAN PENCARIAN DATA LUAR
@@ -221,5 +221,6 @@ const Chatbot: React.FC = () => {
         </>
     );
 };
+
 
 export default Chatbot;
