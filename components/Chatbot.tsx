@@ -80,7 +80,7 @@ const Chatbot: React.FC = () => {
             const ai = new GoogleGenAI({ apiKey: apiKey });
             // Mengaktifkan Google Search Tool
             const chat = ai.chats.create({
-                model: 'gemini-1.5-flash',
+                model: 'gemini-2.0-flash-exp',
                 config: {
                     systemInstruction: SYSTEM_INSTRUCTION,
                     tools: [{ googleSearch: {} }], 
@@ -304,3 +304,4 @@ const Chatbot: React.FC = () => {
 };
 
 export default Chatbot;
+
