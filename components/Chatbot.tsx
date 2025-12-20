@@ -165,7 +165,7 @@ const Chatbot: React.FC = () => {
                 const contents = [...history, { role: 'user', parts: [{ text: userMessage }] }];
 
                 const fallbackResponse = await ai.models.generateContent({
-                    model: 'gemini-1.5-flash',
+                    model: 'gemini-2.0-flash-exp',
                     config: { systemInstruction: SYSTEM_INSTRUCTION }, // Tanpa tools googleSearch
                     contents: contents
                 });
@@ -304,4 +304,5 @@ const Chatbot: React.FC = () => {
 };
 
 export default Chatbot;
+
 
