@@ -152,49 +152,6 @@ const Chatbot: React.FC = () => {
         } catch (error: any) {
             console.warn("Google Search Gagal/Error, mencoba mode Fallback (Tanpa Search)...", error);
             
-            // 2. FALLBACK: Jika Search Gagal, gunakan mode standar tanpa tools
-            try {
-                const ai = new GoogleGenAI({ apiKey: apiKey });
-                
-                // Susun manual history chat agar konteks percakapan tetap nyambung
-                const history = messages.map(m => ({
-                    role: m.role,
-                    parts: [{ text: m.text }]
-                }));
-                // Tambahkan pesan user terbaru
-                const contents = [...history, { role: 'user', parts: [{ text: userMessage }] }];
-
-                const fallbackResponse = await ai.models.generateContent({
-                    model: 'gemini-2.0-flash-exp',
-                    config: { systemInstruction: SYSTEM_INSTRUCTION }, // Tanpa tools googleSearch
-                    contents: contents
-                });
-
-                const fallbackText = fallbackResponse.text;
-                
-                setMessages(prev => [...prev, { 
-                    role: 'model', 
-                    text: fallbackText + "\n\n_(Catatan: Mode pencarian web sedang gangguan, menjawab dengan database internal.)_"
-                }]);
-
-            } catch (fallbackError: any) {
-                console.error("Fallback Error:", fallbackError);
-                
-                // Tampilkan pesan error yang lebih detail ke user
-                let errorMessage = "Maaf, terjadi kesalahan sistem.";
-                if (fallbackError.message?.includes("API key")) {
-                    errorMessage = "⚠️ Masalah API Key. Pastikan API Key valid.";
-                } else if (fallbackError.message) {
-                    errorMessage = `Error: ${fallbackError.message}`;
-                }
-                
-                setMessages(prev => [...prev, { role: 'model', text: errorMessage }]);
-            }
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
     return (
         <>
             {/* Toggle Button */}
@@ -304,5 +261,6 @@ const Chatbot: React.FC = () => {
 };
 
 export default Chatbot;
+
 
 
