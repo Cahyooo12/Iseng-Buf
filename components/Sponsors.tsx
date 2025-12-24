@@ -9,9 +9,9 @@ const sponsors = [
     },
     { 
         id: 2, 
-        name: "Telkomsel", 
-        category: "Connectivity Partner", 
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Telkomsel_2021_icon.svg/1200px-Telkomsel_2021_icon.svg.png" 
+        name: "KOHI ", 
+        category: "Coffee House & Space", 
+        logo: "https://uploads.onecompiler.io/43w9rf9r9/448gwc977/logo%20KOHI%20(1)_page-0001%20(1).jpg" 
     },
     { 
         id: 3, 
