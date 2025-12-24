@@ -3,9 +3,9 @@ import React from 'react';
 const sponsors = [
     { 
         id: 1, 
-        name: "KOSANT STUDIO", 
+        name: "Tandang Studio", 
         category: "Konsultan Event", 
-        logo: "https://uploads.onecompiler.io/43w9rf9r9/447d456ee/P%20DATABASE%20BUF%20(1).png" 
+        logo: "https://uploads.onecompiler.io/43w9rf9r9/448gwc977/Tandang%20Studio_page-0001.jpg" 
     },
     { 
         id: 2, 
