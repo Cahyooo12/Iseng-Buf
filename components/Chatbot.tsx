@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
+import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai"; 
 
-// Tipe data untuk pesan chat
+// Tipe data untuk pesan chat, termasuk sumber grounding jika ada
 interface ChatMessage {
     role: 'user' | 'model';
     text: string;
     sources?: { title: string; uri: string }[];
 }
 
-// Konfigurasi System Instruction
+// Konfigurasi System Instruction dengan Data Lengkap dari Web
 const SYSTEM_INSTRUCTION = `
 Kamu adalah asisten AI resmi untuk "Bamsayota University Fair 2026" (BUF 2026).
 Tugasmu adalah membantu siswa dengan informasi seputar event DAN informasi umum universitas.
@@ -46,67 +46,35 @@ const Chatbot: React.FC = () => {
     ]);
     const [inputText, setInputText] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    
-    // State untuk menyimpan sesi chat
-    const chatSessionRef = useRef<Chat | null>(null);
+    const [chatSession, setChatSession] = useState<Chat | null>(null);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
-    // Auto-scroll ke pesan terbawah
+    // Auto-scroll
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages, isOpen]);
 
-    // Helper untuk mendapatkan API Key dengan aman
-    const getApiKey = () => {
-        if (typeof process !== 'undefined' && process.env && process.env.API_KEY) {
-            return process.env.API_KEY;
-        }
-        // Fallback check window.process if global process is not defined
-        if (typeof window !== 'undefined' && (window as any).process?.env?.API_KEY) {
-            return (window as any).process.env.API_KEY;
-        }
-        return '';
-    };
-
-    // Fungsi Inisialisasi Chat
-    const initChat = () => {
-        const apiKey = getApiKey();
-        if (!apiKey) {
-            console.warn("API_KEY is missing. Chatbot will not function.");
-            return null;
-        }
-
-        try {
-            const ai = new GoogleGenAI({ apiKey: apiKey });
-            // Mengaktifkan Google Search Tool
-            const chat = ai.chats.create({
-                model: 'gemini-2.0-flash-exp',
-                config: {
-                    systemInstruction: SYSTEM_INSTRUCTION,
-                    tools: [{ googleSearch: {} }], 
-                },
-            });
-            return chat;
-        } catch (err) {
-            console.error("Failed to initialize GoogleGenAI:", err);
-            return null;
-        }
-    };
-
-    // Inisialisasi awal saat komponen dimuat
+    // Inisialisasi Gemini dengan Google Search Tool
     useEffect(() => {
-        chatSessionRef.current = initChat();
+        if (!process.env.API_KEY) {
+            console.error("API_KEY is missing!");
+            return;
+        }
+
+        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+        const chat = ai.chats.create({
+            model: 'gemini-2.5-flash',
+            config: {
+                systemInstruction: SYSTEM_INSTRUCTION,
+                tools: [{ googleSearch: {} }], // MENGAKTIFKAN PENCARIAN DATA LUAR
+            },
+        });
+        setChatSession(chat);
     }, []);
 
     const handleSendMessage = async (e?: React.FormEvent) => {
         e?.preventDefault();
-        if (!inputText.trim() || isLoading) return;
-
-        const apiKey = getApiKey();
-        if (!apiKey) {
-             setMessages(prev => [...prev, { role: 'model', text: "⚠️ Error: API Key tidak ditemukan. Aplikasi ini berjalan di lingkungan statis (GitHub Pages) tanpa konfigurasi backend. Silakan cek console atau konfigurasi environment." }]);
-             return;
-        }
+        if (!inputText.trim() || !chatSession || isLoading) return;
 
         const userMessage = inputText;
         setInputText('');
@@ -114,21 +82,10 @@ const Chatbot: React.FC = () => {
         setIsLoading(true);
 
         try {
-            // Pastikan sesi chat ada, jika tidak, coba inisialisasi ulang
-            if (!chatSessionRef.current) {
-                chatSessionRef.current = initChat();
-            }
-
-            if (!chatSessionRef.current) {
-                throw new Error("Gagal membuat sesi chat. Cek console untuk detail.");
-            }
-
-            // 1. COBA UTAMA: Menggunakan Google Search Grounding
-            console.log("Mengirim pesan dengan Google Search...");
-            const result: GenerateContentResponse = await chatSessionRef.current.sendMessage({ message: userMessage });
+            const result: GenerateContentResponse = await chatSession.sendMessage({ message: userMessage });
             const responseText = result.text;
 
-            // Ekstrak Sumber (Grounding) dari metadata
+            // Ekstrak Sumber (Grounding)
             const sources: { title: string; uri: string }[] = [];
             const groundingChunks = result.candidates?.[0]?.groundingMetadata?.groundingChunks;
             
@@ -145,57 +102,18 @@ const Chatbot: React.FC = () => {
 
             setMessages(prev => [...prev, { 
                 role: 'model', 
-                text: responseText || "Info ditemukan.",
+                text: responseText || "Maaf, saya tidak dapat menemukan informasi tersebut.",
                 sources: sources.length > 0 ? sources : undefined
             }]);
 
-        } catch (error: any) {
-            console.warn("Google Search Gagal/Error, mencoba mode Fallback (Tanpa Search)...", error);
-
-            // 2. FALLBACK: Jika Search Gagal, gunakan mode standar tanpa tools
-            try {
-                const ai = new GoogleGenAI({ apiKey: apiKey });
-                
-                // Susun manual history chat agar konteks percakapan tetap nyambung
-                const history = messages.map(m => ({
-                    role: m.role,
-                    parts: [{ text: m.text }]
-                }));
-                // Tambahkan pesan user terbaru
-                const contents = [...history, { role: 'user', parts: [{ text: userMessage }] }];
-
-                const fallbackResponse = await ai.models.generateContent({
-                    model: 'gemini-2.0-flash-exp',
-                    config: { systemInstruction: SYSTEM_INSTRUCTION }, // Tanpa tools googleSearch
-                    contents: contents
-                });
-
-                const fallbackText = fallbackResponse.text;
-                
-                setMessages(prev => [...prev, { 
-                    role: 'model', 
-                    text: fallbackText + "\n\n_(Catatan: Mode pencarian web sedang gangguan, menjawab dengan database internal.)_"
-                }]);
-
-            } catch (fallbackError: any) {
-                console.error("Fallback Error:", fallbackError);
-                
-                // Tampilkan pesan error yang lebih detail ke user
-                let errorMessage = "Maaf, terjadi kesalahan sistem.";
-                if (fallbackError.message?.includes("API key")) {
-                    errorMessage = "⚠️ Masalah API Key. Pastikan API Key valid.";
-                } else if (fallbackError.message) {
-                    errorMessage = `Error: ${fallbackError.message}`;
-                }
-                
-                setMessages(prev => [...prev, { role: 'model', text: errorMessage }]);
-            }
+        } catch (error) {
+            console.error("Error sending message:", error);
+            setMessages(prev => [...prev, { role: 'model', text: "Maaf, terjadi kesalahan koneksi. Silakan coba lagi nanti." }]);
         } finally {
             setIsLoading(false);
         }
     };
 
-            
     return (
         <>
             {/* Toggle Button */}
@@ -305,7 +223,3 @@ const Chatbot: React.FC = () => {
 };
 
 export default Chatbot;
-
-
-
-

@@ -8,10 +8,10 @@ const Footer: React.FC = () => {
                     {/* Brand */}
                     <div>
                         <div className="flex items-center gap-2 mb-6">
-                             <img 
-                                src="https://uploads.onecompiler.io/43w9rf9r9/447d456ee/P%20DATABASE%20BUF.png" 
-                                alt="Logo" 
-                                className="h-10 w-auto" 
+                            <img
+                                src="https://uploads.onecompiler.io/43w9rf9r9/447d456ee/P%20DATABASE%20BUF.png"
+                                alt="Logo"
+                                className="h-10 w-auto"
                             />
                             <span className="text-slate-900 dark:text-white font-bold text-xl">BUF 2026</span>
                         </div>
@@ -35,7 +35,8 @@ const Footer: React.FC = () => {
                             <li><a href="#about" className="hover:text-blue-600 dark:hover:text-blue-500 transition">Tentang</a></li>
                             <li><a href="#universities" className="hover:text-blue-600 dark:hover:text-blue-500 transition">List Universitas</a></li>
                             <li><a href="#schedule" className="hover:text-blue-600 dark:hover:text-blue-500 transition">Rundown</a></li>
-                            <li><a href="#register" className="hover:text-blue-600 dark:hover:text-blue-500 transition">Presensi</a></li>
+                            <li><a href="https://forms.gle/9WcmgfMLmo6JWbvZ8" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 dark:hover:text-blue-500 transition">Presensi</a></li>
+                            <li><a href="https://forms.gle/yRUdBswipscipz3W9" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 dark:hover:text-blue-500 transition">Kritik Saran</a></li>
                         </ul>
                     </div>
 
@@ -49,11 +50,11 @@ const Footer: React.FC = () => {
                             </li>
                             <li className="flex items-center gap-3">
                                 <span className="text-blue-600 dark:text-blue-500">📞</span>
-                                <span>+62 812-3456-7890 (Cahyo)</span>
+                                <span>+62 858-0035-4199 (Rifan)</span>
                             </li>
                             <li className="flex items-center gap-3">
                                 <span className="text-blue-600 dark:text-blue-500">📧</span>
-                                <span>panitia@bamsayota.local</span>
+                                <span>bamsayotauniversityfair10@gmail.com</span>
                             </li>
                         </ul>
                     </div>
