@@ -95,7 +95,7 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-lg md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0 mb-10 leading-relaxed drop-shadow-md"
           >
-            Masa depanmu dimulai di sini. Jelajahi 50+ Universitas, Konsultasi Jurusan, Info Beasiswa, dan rasakan keseruannya!
+            Masa depanmu dimulai di sini. Jelajahi Universitas, Konsultasi Jurusan, Info Beasiswa, dan rasakan keseruannya!
           </motion.p>
 
           <motion.div
@@ -127,20 +127,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 10, 0] }}
-        transition={{ delay: 1.2, duration: 2, repeat: Infinity }}
-        onClick={handleScrollDown}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer p-4 rounded-full hover:bg-white/5 transition-colors z-30 group"
-      >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-[10px] uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors">Scroll</span>
-          <svg className="w-6 h-6 text-white/70 group-hover:text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-          </svg>
-        </div>
-      </motion.div>
+
 
     </section>
   );
