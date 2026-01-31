@@ -1,51 +1,113 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bamsayota University Fair 2026</title>
-    <meta name="description" content="Temukan kampus impianmu di Bamsayota University Fair 2026!" />
-    <link rel="icon" href="https://uploads.onecompiler.io/43w9rf9r9/447d456ee/P%20DATABASE%20BUF.png" type="image/png">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Poppins', 'sans-serif'],
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta Tags -->
+  <title>Bamsayota University Fair 2026 - SMA Negeri 1 Bambanglipuro</title>
+  <meta name="description"
+    content="Hadiri Bamsayota University Fair 2026 (BUF 2026) di SMA Negeri 1 Bambanglipuro. Pameran pendidikan terbesar di Bantul featuring 28+ Universitas, talkshow inspiratif, dan konsultasi jurusan." />
+  <meta name="keywords"
+    content="Bamsayota, Bamsayota University Fair, BUF 2026, SMA Negeri 1 Bambanglipuro, SMAN 1 Bambanglipuro, Pameran Pendidikan Bantul, Event Edukasi Jogja, Universitas Amikom Yogyakarta" />
+  <meta name="author" content="Bamsayota University Fair Committee" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.bamsayotauniversityfair.com/" />
+  <meta property="og:title" content="Bamsayota University Fair 2026 - SMA Negeri 1 Bambanglipuro" />
+  <meta property="og:description"
+    content="Masa depanmu dimulai di sini! Gabung di Bamsayota University Fair 2026. Jelajahi kampus impianmu di SMAN 1 Bambanglipuro." />
+  <meta property="og:image" content="https://uploads.onecompiler.io/43w9rf9r9/44c6wy66p/P%20DATABASE%20BUF%20(1).png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://www.bamsayotauniversityfair.com/" />
+  <meta property="twitter:title" content="Bamsayota University Fair 2026 - SMA Negeri 1 Bambanglipuro" />
+  <meta property="twitter:description"
+    content="Masa depanmu dimulai di sini! Gabung di Bamsayota University Fair 2026. Jelajahi kampus impianmu di SMAN 1 Bambanglipuro." />
+  <meta property="twitter:image"
+    content="https://uploads.onecompiler.io/43w9rf9r9/44c6wy66p/P%20DATABASE%20BUF%20(1).png" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://uploads.onecompiler.io/43w9rf9r9/44c6wy66p/P%20DATABASE%20BUF%20(1).png"
+    type="image/png">
+
+  <!-- JSON-LD Structured Data for Event -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationEvent",
+      "name": "Bamsayota University Fair 2026",
+      "startDate": "2026-02-04T07:30:00+07:00",
+      "endDate": "2026-02-05T15:00:00+07:00",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "SMA Negeri 1 Bambanglipuro",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Jl. Samas No.KM. 18",
+          "addressLocality": "Bambanglipuro",
+          "addressRegion": "DI Yogyakarta",
+          "postalCode": "55764",
+          "addressCountry": "ID"
+        }
+      },
+      "image": [
+        "https://uploads.onecompiler.io/43w9rf9r9/44c6wy66p/P%20DATABASE%20BUF%20(1).png"
+      ],
+      "description": "Event edukasi tahunan terbesar di SMA Negeri 1 Bambanglipuro (Bamsayota). Menghadirkan puluhan universitas ternama, seminar motivasi, dan hiburan.",
+      "organizer": {
+        "@type": "Organization",
+        "name": "OSIS SMA Negeri 1 Bambanglipuro",
+        "url": "https://www.instagram.com/buf.10_/"
+      }
+    }
+  </script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            primary: '#3B82F6',
+            secondary: '#8B5CF6',
+            dark: '#000000',
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'glow': 'glow 2s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
             },
-            colors: {
-              primary: '#3B82F6',
-              secondary: '#8B5CF6',
-              dark: '#000000', 
-            },
-            animation: {
-              'float': 'float 6s ease-in-out infinite',
-              'glow': 'glow 2s ease-in-out infinite alternate',
-            },
-            keyframes: {
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-20px)' },
-              },
-              glow: {
-                'from': { boxShadow: '0 0 10px #3B82F6' },
-                'to': { boxShadow: '0 0 20px #8B5CF6' },
-              }
+            glow: {
+              'from': { boxShadow: '0 0 10px #3B82F6' },
+              'to': { boxShadow: '0 0 20px #8B5CF6' },
             }
           }
         }
       }
-    </script>
+    }
+  </script>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
   <script type="importmap">
 {
   "imports": {
@@ -55,10 +117,13 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-gray-50 dark:bg-black text-slate-900 dark:text-white overflow-x-hidden selection:bg-blue-500 selection:text-white transition-colors duration-300">
-    <div id="root"></div>
+
+<body
+  class="bg-gray-50 dark:bg-black text-slate-900 dark:text-white overflow-x-hidden selection:bg-blue-500 selection:text-white transition-colors duration-300">
+  <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>

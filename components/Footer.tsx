@@ -19,10 +19,20 @@ const Footer: React.FC = () => {
                             Event edukasi terbesar di Bambanglipuro. Jembatan masa depanmu menuju perguruan tinggi impian.
                         </p>
                         <div className="flex gap-4">
-                            {/* Social Icons (Placeholders) */}
-                            {['IG', 'TK', 'YT'].map((social) => (
-                                <a key={social} href="#" className="w-10 h-10 rounded-full bg-gray-100 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 flex items-center justify-center text-slate-600 dark:text-white hover:bg-blue-600 dark:hover:bg-blue-600 hover:text-white dark:hover:text-white hover:border-blue-600 transition-all">
-                                    <span className="text-xs font-bold">{social}</span>
+                            {/* Social Icons */}
+                            {[
+                                { name: 'IG', url: 'https://www.instagram.com/buf.10_/' },
+                                { name: 'TK', url: 'https://www.tiktok.com/@bamsayotauniversityfair?lang=en' },
+                                { name: 'YT', url: '#' }
+                            ].map((social) => (
+                                <a
+                                    key={social.name}
+                                    href={social.url}
+                                    target={social.url !== '#' ? "_blank" : undefined}
+                                    rel={social.url !== '#' ? "noopener noreferrer" : undefined}
+                                    className="w-10 h-10 rounded-full bg-gray-100 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 flex items-center justify-center text-slate-600 dark:text-white hover:bg-blue-600 dark:hover:bg-blue-600 hover:text-white dark:hover:text-white hover:border-blue-600 transition-all"
+                                >
+                                    <span className="text-xs font-bold">{social.name}</span>
                                 </a>
                             ))}
                         </div>
@@ -75,7 +85,7 @@ const Footer: React.FC = () => {
 
                 <div className="border-t border-gray-200 dark:border-zinc-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-slate-500 dark:text-gray-500 text-sm">© 2026 Bamsayota University Fair.</p>
-                    <p className="text-slate-500 dark:text-gray-600 text-xs">Designed by Amikom Student.</p>
+                    <p className="text-slate-500 dark:text-gray-600 text-xs">Designed by Amikom Student & Tandang Studio.</p>
                 </div>
             </div>
         </footer>
