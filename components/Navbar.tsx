@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-6 items-center text-sm font-semibold">
+        <nav className="hidden md:flex gap-8 items-center text-sm font-semibold">
           {navLinks.map((link) => (
             isHome ? (
               <a

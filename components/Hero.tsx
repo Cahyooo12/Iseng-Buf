@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
   const handleScrollDown = () => {
@@ -73,7 +74,7 @@ const Hero: React.FC = () => {
             className="inline-block px-4 py-1.5 mb-6 border border-purple-500/30 rounded-full bg-purple-500/10 backdrop-blur-sm"
           >
             <span className="text-purple-400 font-semibold tracking-wider text-xs md:text-sm uppercase flex items-center gap-2">
-              <span className="animate-pulse">🚀</span> The Biggest Gen Z Event
+              <span className="animate-pulse">🚀</span> EVENT GEN-Z TERBESAR
             </span>
           </motion.div>
 
@@ -95,33 +96,45 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-lg md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0 mb-10 leading-relaxed drop-shadow-md"
           >
-            Masa depanmu dimulai di sini. Jelajahi Universitas, Konsultasi Jurusan, Info Beasiswa, dan rasakan keseruannya!
+            Masa depanmu dimulai di sini, di <span className="text-white font-bold">SMA Negeri 1 Bambanglipuro</span>. Jelajahi Universitas, Konsultasi Jurusan, Info Beasiswa, dan rasakan keseruannya!
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center"
+            className="flex flex-col md:flex-row gap-4 justify-center md:justify-start items-center"
           >
+            {/* Jelajahi Kampus - Secondary (Outline) */}
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="#universities"
-              className="px-8 py-4 bg-white text-black rounded-xl font-bold text-lg shadow-lg hover:shadow-purple-500/50 transition-all flex items-center gap-2"
+              className="px-6 py-4 bg-transparent border border-white/30 hover:bg-white/10 text-white rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2 w-full md:w-auto whitespace-nowrap group"
             >
-              Explore Campus 🎓
+              Jelajahi Kampus
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 group-hover:rotate-45 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+              </svg>
             </motion.a>
+
+            {/* Daftar Gratis - Primary (Gradient) */}
             <motion.a
-              whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="https://forms.gle/9WcmgfMLmo6JWbvZ8"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-transparent border-2 border-white/30 text-white backdrop-blur-sm rounded-xl font-bold text-lg transition-all"
+              className="px-6 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white rounded-xl font-bold text-lg shadow-[0_0_20px_rgba(79,70,229,0.5)] hover:shadow-[0_0_30px_rgba(236,72,153,0.6)] transition-all flex items-center justify-center gap-2 w-full md:w-auto whitespace-nowrap"
             >
-              Daftar Gratis ⚡
+              Daftar Gratis
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
             </motion.a>
+
+
           </motion.div>
         </div>
       </div>
